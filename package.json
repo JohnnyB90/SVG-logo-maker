@@ -1,0 +1,16 @@
+{
+    "name": "svg_image_generator",
+    "version": "1.0.0",
+    "description": "An SVG image generator, it will take input of shape, 3 characters, and the text color to generate an SVG image.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "jest"
+    },
+    "dependencies": {
+        "fs": "^0.0.1-security",
+        "inquirer": "^9.1.5",
+        "jest": "^29.5.0",
+        "node": "^19.8.1"
+    }
+}
