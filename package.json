@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "fs": "^0.0.1-security",
-        "inquirer": "^9.1.5",
+        "inquirer": "^7.3.3",
         "node": "^19.8.1"
     },
     "devDependencies": {
