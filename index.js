@@ -32,34 +32,61 @@ async function run() {
         }
       },
     },
-    // The third question would be a choices of colors input for shape
-    {
-      name: "shapeColor",
-      message: "Which color would you like to use for the shape?",
-      type: "list",
-      choices: [
-        { name: "green", value: "Green" },
-        { name: "blue", value: "Blue" },
-        { name: "purple", value: "Purple" },
-        { name: "yellow", value: "Yellow" },
-        { name: "gray", value: "Gray" },
-        { name: "teal", value: "Teal" },
-      ],
-    },
-    // The fourth question would be a choices of color input for text
-    {
-      name: "textColor",
-      message: "Which color would you like to use for the text?",
-      type: "list",
-      choices: [
-        { name: "green", value: "Green" },
-        { name: "blue", value: "Blue" },
-        { name: "purple", value: "Purple" },
-        { name: "yellow", value: "Yellow" },
-        { name: "gray", value: "Gray" },
-        { name: "teal", value: "Teal" },
-      ],
-    },
+// The third question would be a choices of colors input for shape
+{
+  name: "shapeColor",
+  message: "Which color would you like to use for the shape?",
+  type: "input",
+  validate: function (input) {
+    const validColors = [
+      "green",
+      "blue",
+      "purple",
+      "yellow",
+      "gray",
+      "teal",
+      "azure",
+      "aqua",
+      "blue Gray",
+      "blue Green",
+      "jade",
+    ];
+    const isHexCode = /^#[0-9A-F]{6}$/i.test(input);
+    if (validColors.includes(input.toLowerCase()) || isHexCode) {
+      return true;
+    } else {
+      return "Please enter a valid color name or hex code (e.g. #FF0000 for red).";
+    }
+  },
+},
+// The fourth question would be a choices of color input for text
+{
+  name: "textColor",
+  message: "Which color would you like to use for the text?",
+  type: "input",
+  validate: function (input) {
+    const validColors = [
+      "green",
+      "blue",
+      "purple",
+      "yellow",
+      "gray",
+      "teal",
+      "azure",
+      "aqua",
+      "blue Gray",
+      "blue Green",
+      "jade",
+      // Add any additional valid color names here
+    ];
+    const isHexCode = /^#[0-9A-F]{6}$/i.test(input);
+    if (validColors.includes(input.toLowerCase()) || isHexCode) {
+      return true;
+    } else {
+      return "Please enter a valid color name or hex code (e.g. #FF0000 for red).";
+    }
+  },
+},
   ];
 
   try {
@@ -71,18 +98,26 @@ async function run() {
   }
 }
 
-function writeToFile(svgMarkup) {
-    const dir = './output';
-  
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
-    }
-  
-    const filePath = './output/logo.svg';
-  
-    return writeFile(filePath, svgMarkup)
-      .then(() => console.log('File saved successfully'))
-      .catch((err) => console.error(err));
+async function writeToFile(svgMarkup) {
+  const dir = './examples';
+  const baseName = 'Generated logo';
+  const extName = 'svg';
+  let counter = 0;
+  let filePath = `${dir}/${baseName}.${extName}`;
+
+  // Check if the file already exists
+  while (fs.existsSync(filePath)) {
+    counter++;
+    filePath = `${dir}/${baseName}-${counter}.${extName}`;
   }
+
+  // Write the file
+  try {
+    await writeFile(filePath, svgMarkup);
+    console.log(`Logo saved successfully to ${filePath}!!`);
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 run();
