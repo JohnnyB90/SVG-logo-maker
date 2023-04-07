@@ -33,6 +33,10 @@ There is not installation required.
 
 Simply install node modules and then open the integrated terminal by right clicking on the index.js file and clicking open integrated terminal from there type in node index to run it.  
 
+## Link to Video of using application
+
+https://drive.google.com/file/d/1Z6SlkXQrpSsNsNsSbVVVP9DKRF_uFRFv/view
+
 ## Testing
 
 Testing to ensure the points for the shapes are correct to create the shapes has been done by myself. (Johnny Bonee)
