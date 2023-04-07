@@ -35,7 +35,7 @@ Simply install node modules and then open the integrated terminal by right click
 
 ## Link to Video of using application
 
-https://drive.google.com/file/d/1Z6SlkXQrpSsNsNsSbVVVP9DKRF_uFRFv/view
+https://drive.google.com/file/d/1OkHfxnbJSiR41aeIv6AHMkgnwKqPyDKF/view
 
 ## Testing
 
