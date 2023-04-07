@@ -38,21 +38,9 @@ async function run() {
   message: "Which color would you like to use for the shape?",
   type: "input",
   validate: function (input) {
-    const validColors = [
-      "green",
-      "blue",
-      "purple",
-      "yellow",
-      "gray",
-      "teal",
-      "azure",
-      "aqua",
-      "blue Gray",
-      "blue Green",
-      "jade",
-    ];
     const isHexCode = /^#[0-9A-F]{6}$/i.test(input);
-    if (validColors.includes(input.toLowerCase()) || isHexCode) {
+    const isColorName = /^([a-z]+\s*)+$/i.test(input);
+    if (isHexCode || isColorName) {
       return true;
     } else {
       return "Please enter a valid color name or hex code (e.g. #FF0000 for red).";
@@ -65,22 +53,9 @@ async function run() {
   message: "Which color would you like to use for the text?",
   type: "input",
   validate: function (input) {
-    const validColors = [
-      "green",
-      "blue",
-      "purple",
-      "yellow",
-      "gray",
-      "teal",
-      "azure",
-      "aqua",
-      "blue Gray",
-      "blue Green",
-      "jade",
-      // Add any additional valid color names here
-    ];
     const isHexCode = /^#[0-9A-F]{6}$/i.test(input);
-    if (validColors.includes(input.toLowerCase()) || isHexCode) {
+    const isColorName = /^([a-z]+\s*)+$/i.test(input);
+    if (isHexCode || isColorName) {
       return true;
     } else {
       return "Please enter a valid color name or hex code (e.g. #FF0000 for red).";
